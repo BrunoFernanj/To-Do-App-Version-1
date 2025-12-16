@@ -8,7 +8,7 @@ namespace Testing_Number_1.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<TodoItem> TodoItems { get; set; }
+        public List<TodoItem> TodoItems { get; set; } = new();
 
         public void OnGet()
         {

@@ -6,15 +6,21 @@
 
 <div class="text-center">
     <h1 class="display-4">My First ToDo App</h1>
-    <input type="text" id="todoInput" placeholder="Enter a new task" />
-    <button id="addTodoBtn">Add</button>
 
-    <ul>
-        @foreach (var item in Model.TodoItems)
-        {
-            <li>@item.Title</li>
-        }
-    </ul>
+    <div id="app">
+        <input type="text" v-model="newTodo" placeholder="Enter a new task" />
+        <button v-on:click ="addTodo">Add</button>
 
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <ul>
+            <li v-for="todo in todos">{{ todo }}</li>
+        </ul>
+    </div>
+
+    <p>
+        Learn about
+        <a href="https://learn.microsoft.com/aspnet/core">
+            building Web apps with ASP.NET Core
+        </a>.
+    </p>
 </div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
