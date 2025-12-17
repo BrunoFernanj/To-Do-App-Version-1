@@ -20,6 +20,10 @@
                 <span :class="{ completed: todo.completed }">
                     {{ todo.text }}
                 </span>
+                <img src="/images/fantastic four pic.png"
+                     class="celebration"
+                     v-if="todo.completed" />
+
                 <button class="delete-btn" @@click="removeTodo(index)">✕</button>
             </li>
         </transition-group>
