@@ -5,15 +5,25 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">My First ToDo App</h1>
+    <div id="app" class="todo-container">
+        <h1 class="title">My First ToDo App</h1>
 
-    <div id="app">
-        <input type="text" v-model="newTodo" placeholder="Enter a new task" />
-        <button v-on:click ="addTodo">Add</button>
+        <div class="input-row">
+            <input type="text" v-model="newTodo" placeholder="Enter a new task" />
+            <button v-on:click ="addTodo">Add</button>
+        </div>
 
-        <ul>
-            <li v-for="todo in todos">{{ todo }}</li>
-        </ul>
+        <transition-group name="fade" tag="ul" class="todo-list">
+            <li v-for="(todo, index) in todos" :key="index" class="todo-item">
+                <input type="checkbox" v-model="todo.completed" />
+
+                <span :class="{ completed: todo.completed }">
+                    {{ todo.text }}
+                </span>
+                <button class="delete-btn" @@click="removeTodo(index)">✕</button>
+            </li>
+        </transition-group>
+
     </div>
 
     <p>
